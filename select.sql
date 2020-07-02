@@ -1,7 +1,8 @@
 # 1.Query the existence of 1 course
 select * from course where id = 1;
+select id,name from student join student_course on id = studentId group by id having 1 in (select courseId from student_course where studentId = id);
 # 2.Query the presence of both 1 and 2 courses
-select * from course where id in (1,2);
+ select id,name from student join student_course on id = studentId group by id having 1 in (select courseId from student_course where studentId = id) and 2 in (select courseId from student_course where studentId = id);
 # 3.Query the student number and student name and average score of students whose average score is 60 or higher.
 select id,name,avg(score) as avg_score from student join student_course on id=studentId  group by id having avg(score)>=60;
 # 4.Query the SQL statement of student information that does not have grades in the student_course table
